@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0",
+    "node-json2html": "^2.2.3"
+  }
+}

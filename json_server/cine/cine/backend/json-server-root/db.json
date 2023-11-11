@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$nFcHQ0qAFexeMJxWF2nKtuE3xC7/Cy6LL2ZTbk.PQ.1oFcjdYsXoG",
+      "nombre": "Sergio",
+      "apellidos": "Alvarado Ramos",
+      "id": 1
+    }
+  ],
+  "peliculas": [
+    {
+      "id": 1,
+      "titulo": "El Padrino",
+      "genero": "Drama",
+      "año": 1972,
+      "director": "Francis Ford Coppola",
+      "descripcion": "La historia se centra en la familia Corleone...",
+      "precio": 10.99,
+      "descuento": 5
+    },
+    {
+      "id": 2,
+      "titulo": "Origen",
+      "genero": "Ciencia Ficción",
+      "año": 2010,
+      "director": "Christopher Nolan",
+      "descripcion": "Un ladrón que roba secretos corporativos a través del uso de tecnología de compartir sueños...",
+      "precio": 15.5,
+      "descuento": 10
+    },
+    {
+      "id": 3,
+      "titulo": "Interestelar",
+      "genero": "Ciencia Ficción",
+      "año": 2014,
+      "director": "Christopher Nolan",
+      "descripcion": "Un equipo de exploradores viaja a través de un agujero de gusano en el espacio en un intento de asegurar la supervivencia de la humanidad...",
+      "precio": 12.99,
+      "descuento": 0
+    },
+    {
+      "id": 4,
+      "titulo": "La La Land",
+      "genero": "Musical",
+      "año": 2016,
+      "director": "Damien Chazelle",
+      "descripcion": "Una historia de amor entre un músico de jazz y una aspirante a actriz en Los Ángeles...",
+      "precio": 11,
+      "descuento": 5
+    }
+  ]
+}

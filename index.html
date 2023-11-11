@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineClub</title>
+
+    <!-- Hojas de estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+
+    <!-- Dependencias externas -->
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous" defer>
+        </script>
+    
+    <!-- json2html -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/2.2.1/json2html.min.js" defer>
+    </script>
+
+    <!-- Boostrap 5.3.2 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"
+        defer>
+    </script>
+
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js "></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- Dependencias de aplicación -->
+    <script src="/entorno.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+
+<body>
+    <header class="bg-dark py-3">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">
+                    <i class="bi bi-film"></i> CineClub
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Inicio</a>
+                        </li>
+                        <!--Ordenado por orden alfabético y con paginador alfabético-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:appCargar('peliculas/todos')">Películas</a>
+                        </li>
+
+                        <!--Ordenadas por fecha de salida-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:appCargar('peliculas/estrenos')">Estrenos</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <button id="botonCerrarSesion" class="btn btn-outline-danger d-none" onclick="cerrarSesion()">
+                            <i class="bi bi-box-arrow-right"></i> <!-- Icono de log out -->
+                        </button>                        
+                        <button id="botonInicioSesion" class="btn btn-outline-success" type="button" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                            <i class="bi bi-person-fill"></i> <!-- Icono de persona (inicio sesión) -->
+                        </button>
+                    </div>
+
+                    <!-- Modal de Inicio de Sesión en Modo Oscuro -->
+                    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content bg-dark text-light">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="loginModalLabel">Inicio de Sesión</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Formulario de Inicio de Sesión -->
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="emailInput" class="form-label">Correo Electrónico</label>
+                                            <input type="email" class="form-control" id="email"  name="email"
+                                                aria-describedby="emailHelp">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="passwordInput" class="form-label">Contraseña</label>
+                                            <input type="password" class="form-control" id="password" name="password">
+                                        </div>
+                                        <button id="loginBotonAceptar" type="submit" class="btn btn-success">Iniciar Sesión</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <!-- 
+        Área de trabajo. Aquí se van a cargar las diferentes páginas HTML 
+        que forman la aplicación.
+    -->
+    <div id="workspace"></div>
+    </main>
+
+</body>
+
+</html>
