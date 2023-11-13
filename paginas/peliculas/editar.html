@@ -1,0 +1,92 @@
+<form 
+    id="frmPelicula" 
+    class="container needs-validation" 
+    name="frmPelicula"  
+    action="" novalidate>
+
+    <div class="mx-auto">     
+
+        <!-- Título de la película -->
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input id="titulo" name="titulo" 
+                       type="text" 
+                       class="form-control" 
+                       validacion="tituloExiste">
+                <div class="invalid-feedback"></div>                
+            </div>
+        </div>
+
+        <!-- Género de la película -->
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="genero" class="form-label">Género</label>
+                <input id="genero" name="genero" 
+                       type="text" 
+                       class="form-control" 
+                       validacion="esGenero">
+                <div class="invalid-feedback"></div>                
+            </div>
+        </div>
+
+        <!-- Año de la película -->
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="ano" class="form-label">Año</label>
+                <input id="ano" name="ano" 
+                       type="number" 
+                       class="form-control" 
+                       validacion="esAno">
+                <div class="invalid-feedback"></div>                
+            </div>
+        </div>
+
+        <!-- Director de la película -->
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="director" class="form-label">Director</label>
+                <input id="director" name="director" 
+                       type="text" 
+                       class="form-control" 
+                       validacion="esDirector">
+                <div class="invalid-feedback"></div>                
+            </div>
+        </div>
+
+        <!-- Descripción de la película -->
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea id="descripcion" name="descripcion" 
+                          class="form-control" 
+                          validacion="esDescripcion"></textarea>
+                <div class="invalid-feedback"></div>                
+            </div>
+        </div>
+
+        <!-- Precio de la película -->
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                <input id="precio" name="precio" 
+                       type="number" 
+                       class="form-control" 
+                       validacion="esPrecio">
+                <div class="invalid-feedback"></div>                
+            </div>
+        </div>
+
+        <!-- Descuento de la película -->
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="descuento" class="form-label">Descuento</label>
+                <input id="descuento" name="descuento" 
+                       type="number" 
+                       class="form-control" 
+                       validacion="esDescuento">
+                <div class="invalid-feedback"></div>                
+            </div>
+        </div>
+    </div>
+</form>
