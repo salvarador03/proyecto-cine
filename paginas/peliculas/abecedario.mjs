@@ -125,14 +125,10 @@ function onEditarClick(evento) {
     // Ahora obtengo el objeto
     const pelicula = tablaPeliculas[indice];
 
-    
-        // Edita la película
-        actualizarPelicula(pelicula);
-    } else {
-        console.error('Película no encontrada:', pelicula);
-    }
-    
+    // Edita la película
+    editarPelicula(pelicula);
 }
+
 
 
 function cargarPeliculasAlfabeticamente(numeroPagina = 1) {
