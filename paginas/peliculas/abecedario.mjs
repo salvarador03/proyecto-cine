@@ -9,7 +9,6 @@ import * as frmEditarPelicula from "/paginas/peliculas/editar.mjs";
 
 // Servicios
 import * as peliculas from "/js/servicios/peliculas.mjs";
-import { actualizarPelicula } from "../../js/servicios/peliculas.mjs";
 
 export { init };
 

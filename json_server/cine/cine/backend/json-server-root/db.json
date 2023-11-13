@@ -19,16 +19,6 @@
       "precio": "5.49",
       "descuento": "10",
       "id": 2
-    },
-    {
-      "titulo": "Alegria",
-      "genero": "Infantil",
-      "ano": "1876",
-      "director": "Carlos Monterio",
-      "descripcion": "Muy chula, pero que muy buena pelicula",
-      "precio": "21",
-      "descuento": "40",
-      "id": 3
     }
   ],
   "users": [
