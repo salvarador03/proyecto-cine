@@ -34,6 +34,8 @@ let filtroBusqueda = '';
 
 let tablaPeliculas = null;
 
+let ordenActual = 'asc'; // Variable para llevar el control del orden actual
+
 function init() {
     // Genera el paginador
     paginadorAbecedario.generarPaginador();
@@ -48,7 +50,9 @@ function init() {
     // Carga inicial de las películas por orden alfabético
     cargarPeliculasAlfabeticamente();
 
-    // MODIFICADO Inicializa los eventos 
+  // MODIFICADO Inicializa los eventos
+  $("#btOrdenarAsc").on("click", () => cargarPeliculasAlfabeticamente());
+  $("#btOrdenarDesc").on("click", () => cargarPeliculasAlfabeticamenteDesc());
   $("#btBuscar").on("click", onBuscarClick);
   $("#btAnadir").on("click", onAnadirClick);
   $('#tablaPeliculas').on('click', '[name=btEliminar]', onEliminarClick);
@@ -65,6 +69,13 @@ function mostrarPeliculas(peliculas) {
 // Gestores de eventos
 //------------------------------------------------------------------------------------------
 
+function onOrdenarClick() {
+    // Cambiar el orden actual
+    ordenActual = ordenActual === 'asc' ? 'desc' : 'asc';
+    
+    // Recargar las películas con el nuevo orden
+    cargarPeliculas();
+}
 /** 
  * Gestiona el evento click en botón buscar.
  */
@@ -135,6 +146,16 @@ function cargarPeliculasAlfabeticamente(numeroPagina = 1) {
         peliculas => mostrarPeliculas(peliculas),
         (error) => {
             mostrarMensaje('Error al cargar las películas');
+        },
+        numeroPagina
+    ); 
+}
+
+function cargarPeliculasAlfabeticamenteDesc(numeroPagina = 1) {
+    peliculas.getAlfabeticamenteDesc(
+        peliculas => mostrarPeliculas(peliculas),
+        (error) => {
+            mostrarMensaje('Error al cargar las películas en orden descendente');
         },
         numeroPagina
     ); 

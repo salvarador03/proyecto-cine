@@ -11,6 +11,7 @@ export {
     buscarPeliculas,
     borrarPelicula,
     getAlfabeticamente,
+    getAlfabeticamenteDesc,
     getPorInicial,
     crearPelicula,
     actualizarPelicula
@@ -89,6 +90,24 @@ export {
     
     // Llama a descargar todas las películas paginadas y ordenadas alfabéticamente.
     http.get(url, onOk, onError, pagina, registrosPorPagina);
+    }
+    /**
+    
+    Obtiene las películas ordenadas alfabéticamente de forma descendiente.
+    
+    @param {*} onOk Función callback en caso de éxito.
+    
+    @param {*} onError Función callback en caso de error.
+    
+    @param {*} pagina Número de página para paginación.
+    
+    @param {*} registrosPorPagina Cantidad de registros por página.
+    */
+    function getAlfabeticamenteDesc(onOk, onError, pagina, registrosPorPagina = REGISTROS_POR_PAGINA) {
+        const url = `${URL_PELICULAS}?_sort=titulo&_order=desc`;
+    
+        // Llama a descargar todas las películas paginadas y ordenadas alfabéticamente de manera descendente.
+        http.get(url, onOk, onError, pagina, registrosPorPagina);
     }
     
     /**

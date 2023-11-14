@@ -1,5 +1,7 @@
 "use strict";
 
+// https://developer.mozilla.org/es/docs/Web/API/Window/localStorage
+
 //----------------------------------------------------------------------------
 // Constantes asociadas al GUI
 //----------------------------------------------------------------------------
@@ -18,6 +20,7 @@ const LOGIN_RECURSO = `${URL_BASE}/login`;
 //----------------------------------------------------------------------------
 $(document).ready(() => {
     // No permite acceso a la página sin iniciar sesión
+    actualizarEstadoSesionUI();
     protegerAcceso();
 });
 
@@ -43,7 +46,7 @@ function URL_COMPONENTE_PLANTILLA(nombre) {
 //----------------------------------------------------------------------------
 // Control de sesión
 //----------------------------------------------------------------------------
-let jwtToken = null;
+let jwtToken = localStorage.getItem('jwtToken'); // Recuperar token de localStorage https://developer.mozilla.org/es/docs/Web/API/Window/localStorage
 
 function esSesionIniciada() {
     return jwtToken != null;
@@ -54,11 +57,9 @@ function iniciarSesion() {
 }
 
 function cerrarSesion() {
+    localStorage.removeItem('jwtToken'); // Eliminar token de localStorage https://developer.mozilla.org/es/docs/Web/API/Window/localStorage
     jwtToken = null;
-
-    // Muestra el botón de inicio de sesión y oculta el botón de cerrar sesión
-    $('#botonInicioSesion').removeClass('d-none');
-    $('#botonCerrarSesion').addClass('d-none');
+    actualizarEstadoSesionUI(); // Actualizar estado del GUI
 
     // Muestra mensaje de cerrado de sesión con SweetAlert
     Swal.fire({
@@ -79,6 +80,16 @@ function protegerAcceso() {
     }
 }
 
+function actualizarEstadoSesionUI() {
+    if (esSesionIniciada()) {
+        $('#botonCerrarSesion').removeClass('d-none');
+        $('#botonInicioSesion').addClass('d-none');
+    } else {
+        $('#botonInicioSesion').removeClass('d-none');
+        $('#botonCerrarSesion').addClass('d-none');
+    }
+}
+
 function getAuthenticationHeader() {
     return `Bearer ${jwtToken}`;
 }
@@ -95,7 +106,10 @@ function appCargar(nombre) {
     if (nombre == APP_ROOT) {
         $("#workspace").empty();
     } else {
-        $("#workspace").load(URL_PAGINA(nombre));
+        $("#workspace").load(URL_PAGINA(nombre), () => {
+            // Actualiza el estado de la sesión y la UI después de cargar una página, para corregir error de tener que recargar la página para que se viese
+            actualizarEstadoSesionUI();
+        });
     }
 }
 
@@ -154,9 +168,8 @@ function onLoginBotonAceptarClick(evento) {
 
         jwtToken = datos.accessToken;
 
-        // Muestra el botón de cerrar sesión y oculta el de inicio de sesión
-        $('#botonCerrarSesion').removeClass('d-none');
-        $('#botonInicioSesion').addClass('d-none');
+        // Almacenar el token en localStorage
+        localStorage.setItem('jwtToken', jwtToken); // Guardar token en localStorage https://developer.mozilla.org/es/docs/Web/API/Window/localStorage
 
         Swal.fire({
             icon: 'success',
@@ -164,7 +177,7 @@ function onLoginBotonAceptarClick(evento) {
             showConfirmButton: false,
             timer: 1000
         });
-
+        actualizarEstadoSesionUI();
         appCargar("/");
         $('#loginModal').modal('hide');
     })
