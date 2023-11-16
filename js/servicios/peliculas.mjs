@@ -18,7 +18,8 @@ export {
     getEstrenos,
     getClasicos,
     ordenarPorCampo,
-    ordenarPorCampoDesc
+    ordenarPorCampoDesc,
+    cargarBusquedaSelect
     };
     
     //-----------------------------------------------------------------------------------
@@ -45,6 +46,23 @@ export {
     // Llama a descargar todas las películas paginadas.
     http.get(URL_PELICULAS, onOk, onError, pagina, registrosPorPagina);
     }
+    /**
+     * Carga películas de acuerdo con un filtro de búsqueda y un criterio de ordenamiento.
+     * 
+     * @param {*} campoOrder El campo por el cual ordenar (p.ej., 'titulo', 'ano', 'director').
+     * @param {*} filtroSelect El filtro de búsqueda.
+     * @param {*} onOk Función callback en caso de éxito.
+     * @param {*} onError Función callback en caso de error.
+     * @param {*} pagina Número de página para paginación.
+     * @param {*} registrosPorPagina Cantidad de registros por página.
+     */
+    function cargarBusquedaSelect(campoOrder, filtroSelect, onOk, onError, pagina, registrosPorPagina = REGISTROS_POR_PAGINA) {
+        const url = `${URL_PELICULAS}?_sort=${campoOrder}&q=${filtroSelect}`;
+
+        // Llama a descargar todas las películas con el filtro y orden aplicados.
+        http.get(url, onOk, onError, pagina, registrosPorPagina);
+    }
+
     /**
     
     Permite obtener las películas haciendo una búsqueda de texto.

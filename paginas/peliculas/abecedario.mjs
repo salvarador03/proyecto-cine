@@ -153,11 +153,11 @@ function ordenarPeliculasDesc() {
 }
 
 function cargarPeliculasSelect(numeroPagina = 1) {
-    console.log("Cargar películas por busqueda y por select"); // debug
+    console.log("Cargar películas por búsqueda y por select");
     const campoOrder = document.getElementById('selectOrder').value;
     const iFiltroSelect = document.getElementById('iFiltroSelect').value;
-    /* TODO:
-    //Muestra las películas según el filtro de búsqueda
+
+    // Muestra las películas según el filtro de búsqueda y el criterio de ordenamiento.
     peliculas.cargarBusquedaSelect(
         campoOrder,
         iFiltroSelect,
@@ -165,8 +165,8 @@ function cargarPeliculasSelect(numeroPagina = 1) {
         (error) => { console.error("Error al buscar las películas:", error); },
         numeroPagina
     );
-    */
 }
+
 
 function cargarClasicos() {
     peliculas.getClasicos(
