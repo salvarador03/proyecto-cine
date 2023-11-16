@@ -18,10 +18,35 @@
                       <i class="bi-search"></i>
                   </button>        
               </div>
-              <div class="col-1">
-                <button id="btOrdenarAsc" class="btn btn-secondary">A-Z</button>
-                <button id="btOrdenarDesc" class="btn btn-secondary">Z-A</button>
-              </div>
+                    <div class="col-1">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <button id="btAlfabeticamenteAsc" class="btn btn-secondary m">A-Z</button>
+                            <button id="btAlfabeticamenteDesc" class="btn btn-secondary">Z-A</button>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="row">
+                            <button id="btOrdenarEstrenos" class="btn btn-info">ESTRENOS</button>
+                            <button id="btOrdenarClasicos" class="btn btn-primary">CLÁSICOS</button>
+                        </div>
+                    </div>
+
+            <div class="col-2">
+                <select id="selectOrder" class="form-control">
+                    <option value="id">Id</option>
+                    <option value="titulo">Título</option>
+                    <option value="genero">Género</option>
+                    <option value="precio">Precio</option>
+                    <option value="descuento">Descuento</option>
+                    <option value="ano">Año</option>
+                    <option value="director">Director</option>
+                </select>
+                <div class="col-1 d-flex">
+                    <button id="btOrdenar" class="btn btn-secondary m-2">Ordenar <em>(ASC)</em></button>
+                    <button id="btOrdenarDesc" class="btn btn-secondary m-2">Ordenar <em>(DESC)</em></button> <!--No se pondría asc o desc en una página real-->
+                </div>
+            </div>
+            
           </div>
       </div>  
 

@@ -14,7 +14,11 @@ export {
     getAlfabeticamenteDesc,
     getPorInicial,
     crearPelicula,
-    actualizarPelicula
+    actualizarPelicula,
+    getEstrenos,
+    getClasicos,
+    ordenarPorCampo,
+    ordenarPorCampoDesc
     };
     
     //-----------------------------------------------------------------------------------
@@ -109,6 +113,70 @@ export {
         // Llama a descargar todas las películas paginadas y ordenadas alfabéticamente de manera descendente.
         http.get(url, onOk, onError, pagina, registrosPorPagina);
     }
+/**
+ * Obtiene las películas ordenadas ascendentemente por un campo específico.
+ * 
+ * @param {*} campo El campo por el cual ordenar (p.ej., 'titulo', 'ano', 'director').
+ * @param {*} onOk Función callback en caso de éxito.
+ * @param {*} onError Función callback en caso de error.
+ * @param {*} pagina Número de página para paginación.
+ * @param {*} registrosPorPagina Cantidad de registros por página.
+ */
+function ordenarPorCampo(campo, onOk, onError, pagina, registrosPorPagina = REGISTROS_POR_PAGINA) {
+    const url = `${URL_PELICULAS}?_sort=${campo}&_order=asc`;
+
+    http.get(url, onOk, onError, pagina, registrosPorPagina);
+}
+/**
+ * Obtiene las películas ordenadas de forma desc por un campo específico.
+ * 
+ * @param {*} campo El campo por el cual ordenar (p.ej., 'titulo', 'ano', 'director').
+ * @param {*} onOk Función callback en caso de éxito.
+ * @param {*} onError Función callback en caso de error.
+ * @param {*} pagina Número de página para paginación.
+ * @param {*} registrosPorPagina Cantidad de registros por página.
+ */
+function ordenarPorCampoDesc(campo, onOk, onError, pagina, registrosPorPagina = REGISTROS_POR_PAGINA) {
+    const url = `${URL_PELICULAS}?_sort=${campo}&_order=desc`;
+
+    http.get(url, onOk, onError, pagina, registrosPorPagina);
+}
+    /**
+    
+    Obtiene las películas ordenadas por año orden descendente (ESTRENOS).
+    
+    @param {*} onOk Función callback en caso de éxito.
+    
+    @param {*} onError Función callback en caso de error.
+    
+    @param {*} pagina Número de página para paginación.
+    
+    @param {*} registrosPorPagina Cantidad de registros por página.
+    */
+    function getEstrenos(onOk, onError, pagina, registrosPorPagina = REGISTROS_POR_PAGINA) {
+        const url = `${URL_PELICULAS}?_sort=ano&_order=desc`;
+        
+        // Llama a descargar todas las películas paginadas y ordenadas alfabéticamente.
+        http.get(url, onOk, onError, pagina, registrosPorPagina);
+        }
+    /**
+    
+    Obtiene las películas ordenadas por año orden ascendente (CLÁSICOS).
+    
+    @param {*} onOk Función callback en caso de éxito.
+    
+    @param {*} onError Función callback en caso de error.
+    
+    @param {*} pagina Número de página para paginación.
+    
+    @param {*} registrosPorPagina Cantidad de registros por página.
+    */
+    function getClasicos(onOk, onError, pagina, registrosPorPagina = REGISTROS_POR_PAGINA) {
+        const url = `${URL_PELICULAS}?_sort=ano&_order=asc`;
+        
+        // Llama a descargar todas las películas paginadas y ordenadas alfabéticamente.
+        http.get(url, onOk, onError, pagina, registrosPorPagina);
+        }
     
     /**
     
@@ -125,7 +193,7 @@ export {
     @param {*} registrosPorPagina Cantidad de registros por página.
     */
     function getPorInicial(inicial, onOk, onError, pagina, registrosPorPagina = REGISTROS_POR_PAGINA) {
-    const url = `${URL_PELICULAS}?titulo_like=^${inicial}`;
+    const url = `${URL_PELICULAS}?titulo_like=^${inicial}`; // ^ este simbolito indica (todos los que empiezen por lo que sea)
     
     // Llama a descargar todas las películas que comienzan con una letra específica.
     http.get(url, onOk, onError, pagina, registrosPorPagina);

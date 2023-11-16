@@ -9,6 +9,7 @@ import * as frmEditarPelicula from "/paginas/peliculas/editar.mjs";
 
 // Servicios
 import * as peliculas from "/js/servicios/peliculas.mjs";
+import { ordenarPorCampo } from "../../js/servicios/peliculas.mjs";
 
 export { init };
 
@@ -34,8 +35,6 @@ let filtroBusqueda = '';
 
 let tablaPeliculas = null;
 
-let ordenActual = 'asc'; // Variable para llevar el control del orden actual
-
 function init() {
     // Genera el paginador
     paginadorAbecedario.generarPaginador();
@@ -51,8 +50,12 @@ function init() {
     cargarPeliculasAlfabeticamente();
 
   // MODIFICADO Inicializa los eventos
-  $("#btOrdenarAsc").on("click", () => cargarPeliculasAlfabeticamente());
-  $("#btOrdenarDesc").on("click", () => cargarPeliculasAlfabeticamenteDesc());
+  $('#btOrdenar').on("click", () => ordenarPeliculas());
+  $('#btOrdenarDesc').on("click", () => ordenarPeliculasDesc());
+  $("#btAlfabeticamenteAsc").on("click", () => cargarPeliculasAlfabeticamente());
+  $("#btAlfabeticamenteDesc").on("click", () => cargarPeliculasAlfabeticamenteDesc());
+  $("#btOrdenarEstrenos").on("click", () => cargarEstrenos());
+  $("#btOrdenarClasicos").on("click", () => cargarClasicos());
   $("#btBuscar").on("click", onBuscarClick);
   $("#btAnadir").on("click", onAnadirClick);
   $('#tablaPeliculas').on('click', '[name=btEliminar]', onEliminarClick);
@@ -68,14 +71,6 @@ function mostrarPeliculas(peliculas) {
 //------------------------------------------------------------------------------------------
 // Gestores de eventos
 //------------------------------------------------------------------------------------------
-
-function onOrdenarClick() {
-    // Cambiar el orden actual
-    ordenActual = ordenActual === 'asc' ? 'desc' : 'asc';
-    
-    // Recargar las películas con el nuevo orden
-    cargarPeliculas();
-}
 /** 
  * Gestiona el evento click en botón buscar.
  */
@@ -115,7 +110,7 @@ function onAnadirClick(evento) {
             $(evento.target).closest('tr').remove();
             for(let n = 1,fin = false;n < tablaPeliculas.length && ! fin;n++) {
                 if(tablaPeliculas[n].id == id) {
-                  tablaPeliculas.splice(n, n);
+                  tablaPeliculas.splice(n, n); // método para eliminar elementos de un array
                   fin = true;
                 }
               }
@@ -139,6 +134,41 @@ function onEditarClick(evento) {
     editarPelicula(pelicula);
 }
 
+function ordenarPeliculas() {
+    const campoOrder = document.getElementById('selectOrder').value;
+    peliculas.ordenarPorCampo(
+        campoOrder,
+        peliculas => mostrarPeliculas(peliculas),
+        error => mostrarMensaje("Error al ordenar las películas")
+    );
+}
+
+function ordenarPeliculasDesc() {
+    const campoOrder = document.getElementById('selectOrder').value;
+    peliculas.ordenarPorCampoDesc(
+        campoOrder,
+        peliculas => mostrarPeliculas(peliculas),
+        error => mostrarMensaje("Error al ordenar las películas")
+    );
+}
+
+function cargarClasicos() {
+    peliculas.getClasicos(
+        peliculas => mostrarPeliculas(peliculas),
+        (error) => {
+            mostrarMensaje("Error al cargar las películas")
+        }
+    )
+}
+
+function cargarEstrenos(numeroPagina = 1) {
+    peliculas.getEstrenos(
+        peliculas => mostrarPeliculas(peliculas),
+        (error) => {
+            mostrarMensaje("Error al cargar las películas");
+        }
+    )
+}
 
 
 function cargarPeliculasAlfabeticamente(numeroPagina = 1) {

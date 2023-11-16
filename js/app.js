@@ -46,7 +46,7 @@ function URL_COMPONENTE_PLANTILLA(nombre) {
 //----------------------------------------------------------------------------
 // Control de sesión
 //----------------------------------------------------------------------------
-let jwtToken = localStorage.getItem('jwtToken'); // Recuperar token de localStorage https://developer.mozilla.org/es/docs/Web/API/Window/localStorage
+let jwtToken = localStorage.getItem('jwtToken'); // Recuperar token de localStorage, primera forma de inicializarlo https://developer.mozilla.org/es/docs/Web/API/Window/localStorage
 
 function esSesionIniciada() {
     return jwtToken != null;
@@ -82,9 +82,11 @@ function protegerAcceso() {
 
 function actualizarEstadoSesionUI() {
     if (esSesionIniciada()) {
+        // Muestra el boton cerrar sesión y oculta el de inicio de sesión
         $('#botonCerrarSesion').removeClass('d-none');
         $('#botonInicioSesion').addClass('d-none');
     } else {
+        // Muestra el boton de inicio de sesión y oculta el de cerrar sesión
         $('#botonInicioSesion').removeClass('d-none');
         $('#botonCerrarSesion').addClass('d-none');
     }
@@ -119,7 +121,7 @@ function appCargar(nombre) {
 
 function mostrarLogin() {
     // Inicializa la ventana de login
-    $('#loginBotonAceptar').off();
+    $('#loginBotonAceptar').off(); // Para asegurarse de que no haya eventos duplicados y solo funcione en caso de ser pulsado
     $('#loginBotonAceptar').on('click', onLoginBotonAceptarClick);
 
     // Muestra la ventana modal
@@ -150,7 +152,7 @@ function onLoginBotonAceptarClick(evento) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(parametros)
+            body: JSON.stringify(parametros) // convertir objeto en cadena de texto json
         }
     )
     .then(response => {

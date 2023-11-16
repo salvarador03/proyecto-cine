@@ -3,9 +3,9 @@
     {
       "titulo": "Origen",
       "genero": "Accion y Misterio",
-      "ano": "1999",
+      "ano": "2001",
       "director": "Chrispher Nolan",
-      "descripcion": "Una película muy muy chula.......",
+      "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "precio": "9.99",
       "descuento": "11",
       "id": 1
@@ -15,10 +15,30 @@
       "genero": "Misterio, Ciencia y Ficción",
       "ano": "2002",
       "director": "Chrispher Nolan",
-      "descripcion": "Otra película también muy chula..........",
+      "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "precio": "5.09",
       "descuento": "10",
       "id": 2
+    },
+    {
+      "titulo": "Spiderman 2",
+      "genero": "Acción",
+      "ano": "2004",
+      "director": "Stan Lee",
+      "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "precio": "20",
+      "descuento": "10",
+      "id": 3
+    },
+    {
+      "titulo": "The Creator",
+      "genero": "Ciencia/Ficción",
+      "ano": "2023",
+      "director": "Gareth Edwards",
+      "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "precio": "13",
+      "descuento": "33",
+      "id": 4
     }
   ],
   "users": [
