@@ -9,7 +9,6 @@ import * as frmEditarPelicula from "/paginas/peliculas/editar.mjs";
 
 // Servicios
 import * as peliculas from "/js/servicios/peliculas.mjs";
-import { ordenarPorCampo } from "../../js/servicios/peliculas.mjs";
 
 export { init };
 
@@ -50,6 +49,7 @@ function init() {
     cargarPeliculasAlfabeticamente();
 
   // MODIFICADO Inicializa los eventos
+  $('#btBuscarSelect').on("click", () => cargarPeliculasSelect());
   $('#btOrdenar').on("click", () => ordenarPeliculas());
   $('#btOrdenarDesc').on("click", () => ordenarPeliculasDesc());
   $("#btAlfabeticamenteAsc").on("click", () => cargarPeliculasAlfabeticamente());
@@ -150,6 +150,22 @@ function ordenarPeliculasDesc() {
         peliculas => mostrarPeliculas(peliculas),
         error => mostrarMensaje("Error al ordenar las películas")
     );
+}
+
+function cargarPeliculasSelect(numeroPagina = 1) {
+    console.log("Cargar películas por busqueda y por select"); // debug
+    const campoOrder = document.getElementById('selectOrder').value;
+    const iFiltroSelect = document.getElementById('iFiltroSelect').value;
+    /* TODO:
+    //Muestra las películas según el filtro de búsqueda
+    peliculas.cargarBusquedaSelect(
+        campoOrder,
+        iFiltroSelect,
+        peliculas => mostrarPeliculas(peliculas),
+        (error) => { console.error("Error al buscar las películas:", error); },
+        numeroPagina
+    );
+    */
 }
 
 function cargarClasicos() {
